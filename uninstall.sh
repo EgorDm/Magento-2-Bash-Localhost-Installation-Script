@@ -26,7 +26,7 @@ if [ ! -d "$DIRECTORY" ]; then
 fi 
 
 ## Create Database	
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "DROP DATABASE \`$MYSQL_DATABASE_NAME\`"
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -e "DROP DATABASE \`$MYSQL_DATABASE_NAME\`"
 
 ## Remove folder
 rm -rf $DIRECTORY

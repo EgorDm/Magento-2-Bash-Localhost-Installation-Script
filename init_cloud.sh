@@ -40,7 +40,7 @@ if [[ $EDITION != "custom-"* ]]; then
     fi
 fi
 ## Create Database
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
 
 COMPOSER="composer"
 PHP="php"

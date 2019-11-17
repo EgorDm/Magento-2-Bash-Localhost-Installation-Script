@@ -29,7 +29,7 @@ if [ -d "$DIRECTORY" ]; then
 fi
 
 ## Create Database
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
 
 ## Create Webshop Directory
 mkdir $DIRECTORY

@@ -28,9 +28,9 @@ fi
 tar -xvf $DIRECTORY/files.tar.gz --directory $DIRECTORY -k --exclude=.idea --exclude=pub/media/catalog/product/* --exclude=media/catalog/product/* --exclude=var/log/* --exclude=var/report/*
 
 ## Create and import DB
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE_NAME < $DIRECTORY/structure.sql
-mysql -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE_NAME < $DIRECTORY/data.sql
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -e "CREATE DATABASE IF NOT EXISTS \`$MYSQL_DATABASE_NAME\`"
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE_NAME < $DIRECTORY/structure.sql
+mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE_NAME < $DIRECTORY/data.sql
 
 ## Check if we are installing Magento 1 or 2
 if [ -f "$DIRECTORY/app/etc/env.php" ]; then
@@ -77,7 +77,7 @@ do
   else
 	  ln -s $DIRECTORY $DOMAINS_PATH/$STRIPT
   fi
-	mysql -u$MYSQL_USER -p$MYSQL_PASSWORD -D $MYSQL_DATABASE_NAME -e "UPDATE \`core_config_data\` SET \`value\` ='$URL$STRIPT$DOMAIN_SUFFIX/' WHERE config_id = $config_id"
+	mysql -h$MYSQL_HOST -u$MYSQL_USER -p$MYSQL_PASSWORD -D $MYSQL_DATABASE_NAME -e "UPDATE \`core_config_data\` SET \`value\` ='$URL$STRIPT$DOMAIN_SUFFIX/' WHERE config_id = $config_id"
 	echo "updated url for $STRIPT"
 done
 ## Developer Settings
