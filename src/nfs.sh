@@ -3,8 +3,8 @@ if [ "$nfs" = "true" ]; then
   if [ "$cache" = "redis" ] &&  [ "$valet" = "plus" ]; then
     echo "configuring redis"
     valet redis on
-    $PHP $DIRECTORY/bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=127.0.0.1 --cache-backend-redis-db=0
-    $PHP $DIRECTORY/bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=127.0.0.1 --page-cache-redis-db=1
+    $PHP $DIRECTORY/bin/magento setup:config:set --cache-backend=redis --cache-backend-redis-server=$REDIS_HOST --cache-backend-redis-db=0
+    $PHP $DIRECTORY/bin/magento setup:config:set --page-cache=redis --page-cache-redis-server=$REDIS_HOST --page-cache-redis-db=1
   fi
   echo "installing mage2tv/magento-cache-clean (can be used as cf --watch - see https://github.com/mage2tv/magento-cache-clean for more information)"
   $COMPOSER require --dev mage2tv/cache-clean --working-dir=$DIRECTORY

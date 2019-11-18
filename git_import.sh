@@ -65,12 +65,12 @@ if [ "$VERSION" = "m2" ]; then
 	cp $SCRIPTPATH/Helper/Placeholder/env.php $DIRECTORY/app/etc
 	composer install -d$DIRECTORY
 	rm $DIRECTORY/var/.regenerate
-	$PHP $SCRIPTPATH/Helper/updateEnv.php -f$DIRECTORY -d$MYSQL_DATABASE_NAME -u$MYSQL_USER -p$MYSQL_PASSWORD
+	$PHP $SCRIPTPATH/Helper/updateEnv.php -h$MYSQL_HOST -f$DIRECTORY -d$MYSQL_DATABASE_NAME -u$MYSQL_USER -p$MYSQL_PASSWORD
 	$MAGERUN_COMMAND --root-dir=$DIRECTORY module:enable --all
 else
 	## Create new local.xml
 	cp $SCRIPTPATH/Helper/Placeholder/local.xml $DIRECTORY/app/etc/local.xml
-	$PHP $SCRIPTPATH/Helper/updateLocal.php -f$DIRECTORY -d$MYSQL_DATABASE_NAME -u$MYSQL_USER -p$MYSQL_PASSWORD
+	$PHP $SCRIPTPATH/Helper/updateLocal.php -h$MYSQL_HOST -f$DIRECTORY -d$MYSQL_DATABASE_NAME -u$MYSQL_USER -p$MYSQL_PASSWORD
 fi
 
 ## Set correct base urls

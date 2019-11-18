@@ -1,6 +1,6 @@
 <?php
 
-$config = getopt('f:d:u:p:');
+$config = getopt('f:h:d:u:p:');
 
 $envFilePath = $config['f'] . '/app/etc/env.php';
 
@@ -20,7 +20,7 @@ $envfileData['MAGE_MODE'] = 'developer';
 
 foreach($envfileData['db']['connection'] as &$connection) {
 	$connection['password'] = $config['p'];
-	$connection['host'] = '127.0.0.1';
+	$connection['host'] = $config['h'];
 	$connection['dbname'] = $config['d'];
 	$connection['username'] = $config['u'];
 }
